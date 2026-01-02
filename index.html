@@ -280,7 +280,7 @@
                 high-profit product opportunities.
               </h1>
 
-              <!-- ✅ MOBILE IMAGE RIGHT AFTER HEADLINE -->
+              <!-- ✅ MOBILE IMAGE RIGHT AFTER HEADLINE (shows FULL image, no crop) -->
               <div class="mt-5 lg:hidden reveal">
                 <div class="relative">
                   <div class="absolute -inset-2 rounded-[28px] bg-gradient-to-br from-blue-500/25 to-green-500/20 blur-2xl"></div>
@@ -290,11 +290,14 @@
                     <div class="absolute bottom-0 left-0 w-48 h-48 bg-green-500/10 rounded-full blur-2xl"></div>
 
                     <div class="relative">
+                      <!-- IMPORTANT:
+                           Put your image in the same folder as this HTML and rename it to: abdul-latif.jpg
+                           Then it will work everywhere (Vercel / GHL / local). -->
                       <img
-                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=1200&q=80"
-                        alt="Professional portrait"
-                        class="w-full rounded-[20px] object-cover border border-slate-200"
-                        style="aspect-ratio: 1 / 1;"
+                        src="abdul-latif.jpg"
+                        alt="Abdul Latif portrait"
+                        class="w-full rounded-[20px] border border-slate-200 bg-slate-100"
+                        style="aspect-ratio: 4 / 3; object-fit: contain;"
                         loading="lazy"
                         decoding="async"
                       />
@@ -360,10 +363,10 @@
 
                   <div class="relative">
                     <img
-                      src="WhatsApp Image 2026-01-02 at 10.18.36.jpeg"
-                      alt="Professional portrait"
-                      class="w-full rounded-[22px] object-cover border border-slate-200"
-                      style="aspect-ratio: 1 / 1;"
+                      src="abdul-latif.jpg"
+                      alt="Abdul Latif portrait"
+                      class="w-full rounded-[22px] border border-slate-200 bg-slate-100"
+                      style="aspect-ratio: 4 / 3; object-fit: contain;"
                       loading="lazy"
                       decoding="async"
                     />
@@ -692,6 +695,7 @@
             <div class="card p-5">
               <div class="flex items-center justify-between">
                 <div class="font-extrabold">Client B</div>
+                <div class="text-xs text-slate-500">★★★★★</div>
               </div>
               <p class="text-sm text-slate-600 mt-2">“Found a better angle than competitors — exactly what I needed.”</p>
             </div>
