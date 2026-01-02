@@ -38,14 +38,12 @@
     }
     .font-head { font-family: Poppins, Inter, system-ui; }
 
-    /* Better focus visibility (keyboard users) */
     :focus-visible{
       outline: 3px solid rgba(29,78,216,.55);
       outline-offset: 3px;
       border-radius: 12px;
     }
 
-    /* Subtle grid */
     .grid-bg{
       background-image:
         linear-gradient(to right, rgba(15,23,42,.06) 1px, transparent 1px),
@@ -54,7 +52,6 @@
       mask-image: radial-gradient(closest-side, rgba(0,0,0,.9), rgba(0,0,0,.2), transparent);
     }
 
-    /* Glass / glow wrapper */
     .glow{
       position:relative;
       border-radius: 28px;
@@ -76,7 +73,6 @@
       backdrop-filter: blur(10px);
     }
 
-    /* Reveal on scroll */
     .reveal{
       opacity:0;
       transform: translateY(14px);
@@ -84,7 +80,6 @@
     }
     .reveal.in{ opacity:1; transform: translateY(0); }
 
-    /* Fancy button (bigger tap targets) */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
       padding: .95rem 1.15rem;
@@ -113,11 +108,9 @@
     }
     .btn2:hover{ transform: translateY(-2px); background: rgba(255,255,255,1); }
 
-    /* Hover lift cards */
     .lift{ transition: transform .2s ease, box-shadow .25s ease; }
     .lift:hover{ transform: translateY(-6px); box-shadow: 0 26px 60px rgba(2,6,23,.14); }
 
-    /* Badges */
     .badge{
       display:inline-flex; align-items:center; gap:.4rem;
       padding:.35rem .7rem;
@@ -130,7 +123,6 @@
       white-space: nowrap;
     }
 
-    /* Timeline dot line */
     .timeline-line{
       position:absolute; left:50%;
       top:0; bottom:0;
@@ -139,7 +131,6 @@
       background: linear-gradient(to bottom, rgba(29,78,216,.0), rgba(29,78,216,.55), rgba(34,197,94,.55), rgba(29,78,216,.0));
     }
 
-    /* Brand marquee */
     .marquee{
       overflow:hidden;
       mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -157,7 +148,6 @@
       to{ transform: translateX(-50%); }
     }
 
-    /* Soft section separator */
     .soft-divider{ position: relative; }
     .soft-divider::before{
       content:"";
@@ -168,7 +158,6 @@
       background: linear-gradient(to right, transparent, rgba(15,23,42,.12), transparent);
     }
 
-    /* NAV wrapping fix */
     .nav-nowrap{
       flex-wrap: nowrap;
       white-space: nowrap;
@@ -178,7 +167,6 @@
     }
     .nav-nowrap::-webkit-scrollbar{ display:none; }
 
-    /* Skip link */
     .skip-link{
       position:absolute;
       left:-999px; top: 8px;
@@ -190,7 +178,6 @@
     }
     .skip-link:focus{ left: 12px; }
 
-    /* Mobile menu panel */
     .menu-panel{
       max-height: 0;
       overflow: hidden;
@@ -198,12 +185,10 @@
     }
     .menu-panel.open{ max-height: 420px; }
 
-    /* Small screens: slightly softer shadows */
     @media (max-width: 640px){
       .card{ box-shadow: 0 12px 28px rgba(2,6,23,.07); }
     }
 
-    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       .reveal{ transition:none; transform:none; opacity:1; }
       .track{ animation:none; }
@@ -295,6 +280,30 @@
                 high-profit product opportunities.
               </h1>
 
+              <!-- ✅ MOBILE IMAGE RIGHT AFTER HEADLINE -->
+              <div class="mt-5 lg:hidden reveal">
+                <div class="relative">
+                  <div class="absolute -inset-2 rounded-[28px] bg-gradient-to-br from-blue-500/25 to-green-500/20 blur-2xl"></div>
+
+                  <div class="card p-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-blue-600/10 rounded-full blur-2xl"></div>
+                    <div class="absolute bottom-0 left-0 w-48 h-48 bg-green-500/10 rounded-full blur-2xl"></div>
+
+                    <div class="relative">
+                      <img
+                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=1200&q=80"
+                        alt="Professional portrait"
+                        class="w-full rounded-[20px] object-cover border border-slate-200"
+                        style="aspect-ratio: 4 / 3;"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div class="absolute top-4 left-4 badge">Available</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <p class="mt-4 text-slate-600 text-base md:text-lg leading-relaxed max-w-xl">
                 I use keyword + market research, competitor audits, and profitability & risk checks to deliver a
                 clear <b>Go/No-Go decision</b> and a <b>launch-ready blueprint</b> — so you don’t waste money on risky ideas.
@@ -340,8 +349,8 @@
               </div>
             </div>
 
-            <!-- Right -->
-            <div class="reveal">
+            <!-- ✅ Right (desktop only) -->
+            <div class="reveal hidden lg:block">
               <div class="relative">
                 <div class="absolute -inset-2 rounded-[28px] bg-gradient-to-br from-blue-500/25 to-green-500/20 blur-2xl"></div>
 
@@ -361,7 +370,7 @@
                     <div class="absolute top-4 left-4 badge">Available</div>
                   </div>
 
-                  <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div class="mt-5 grid grid-cols-2 gap-3">
                     <div class="card p-4">
                       <div class="text-xs font-extrabold text-slate-500">Specialty</div>
                       <div class="mt-1 font-extrabold">Opportunity Scoring</div>
@@ -372,7 +381,7 @@
                       <div class="mt-1 font-extrabold">Launch Blueprint</div>
                       <div class="text-xs text-slate-500 mt-1">Positioning • Steps • Notes</div>
                     </div>
-                    <div class="card p-4 sm:col-span-2">
+                    <div class="card p-4 col-span-2">
                       <div class="text-xs font-extrabold text-slate-500">Typical output</div>
                       <p class="mt-1 text-sm text-slate-600 leading-relaxed">
                         A clean report with winners/losers, competitor gaps, risk flags, and a clear “what to do next” plan.
@@ -399,7 +408,6 @@
     <section id="mission" class="max-w-7xl mx-auto px-4 pb-12 soft-divider">
       <div class="reveal glow">
         <div class="card overflow-hidden" style="background:#18222d;border-color:rgba(255,255,255,.08);">
-
           <div class="h-px w-full"
                style="background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);"></div>
 
@@ -684,7 +692,6 @@
             <div class="card p-5">
               <div class="flex items-center justify-between">
                 <div class="font-extrabold">Client B</div>
-                <div class="text-xs text-slate-500">★★★★★</div>
               </div>
               <p class="text-sm text-slate-600 mt-2">“Found a better angle than competitors — exactly what I needed.”</p>
             </div>
@@ -844,12 +851,10 @@
       menuIcon.textContent = isOpen ? '✕' : '☰';
     });
 
-    // Close menu when clicking a link
     mobileMenu?.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', ()=> closeMenu());
     });
 
-    // Close menu on ESC
     document.addEventListener('keydown', (e)=>{
       if(e.key === 'Escape') closeMenu();
     });
