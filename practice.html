@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Abdul Latif — Amazon Brand Building Strategist</title>
+
+  <!-- Tailwind CDN (single file) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#0b1220;
+      --muted:#5b677a;
+      --brand:#1d4ed8;
+      --brand2:#22c55e;
+      --card:#ffffff;
+      --border: rgba(15, 23, 42, .10);
+    }
+    html { scroll-behavior:smooth; }
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(29,78,216,.12), transparent 60%),
+        radial-gradient(900px 500px at 90% 15%, rgba(34,197,94,.12), transparent 60%),
+        radial-gradient(900px 600px at 35% 100%, rgba(29,78,216,.08), transparent 55%),
+        #f7f9ff;
+    }
+    .font-head { font-family: Poppins, Inter, system-ui; }
+
+    /* Subtle grid (ONLY for HERO area) */
+    .grid-bg{
+      background-image:
+        linear-gradient(to right, rgba(15,23,42,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,23,42,.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(closest-side, rgba(0,0,0,.85), rgba(0,0,0,.18), transparent);
+    }
+
+    /* Glass / glow wrapper */
+    .glow{
+      position:relative;
+      border-radius: 28px;
+      isolation:isolate;
+    }
+    .glow::before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(29,78,216,.35), rgba(34,197,94,.25), rgba(29,78,216,.15));
+      z-index:-1;
+      opacity:.85;
+    }
+    .card{
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(2,6,23,.08);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Reveal on scroll */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: .7s ease;
+    }
+    .reveal.in{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Fancy button */
+    .btn{
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding: .9rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid rgba(2,6,23,.10);
+      background: linear-gradient(135deg, rgba(29,78,216,1), rgba(34,197,94,1));
+      color: white;
+      box-shadow: 0 18px 42px rgba(29,78,216,.20);
+      transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); filter: brightness(1.03); box-shadow: 0 22px 52px rgba(29,78,216,.26); }
+    .btn:active{ transform: translateY(0px); }
+
+    .btn2{
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding: .9rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid rgba(2,6,23,.12);
+      background: rgba(255,255,255,.9);
+      color: var(--ink);
+      transition: transform .15s ease, background .2s ease;
+    }
+    .btn2:hover{ transform: translateY(-2px); background: rgba(255,255,255,1); }
+
+    /* Hover lift cards */
+    .lift{ transition: transform .2s ease, box-shadow .25s ease; }
+    .lift:hover{ transform: translateY(-6px); box-shadow: 0 26px 60px rgba(2,6,23,.14); }
+
+    /* Badges */
+    .badge{
+      display:inline-flex; align-items:center; gap:.4rem;
+      padding:.35rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(2,6,23,.10);
+      background: rgba(255,255,255,.78);
+      font-weight:800;
+      color: rgba(2,6,23,.78);
+      white-space: nowrap;
+    }
+
+    /* Soft section separator */
+    .soft-divider{ position: relative; }
+    .soft-divider::before{
+      content:"";
+      position:absolute; left:50%; transform:translateX(-50%);
+      top:-22px;
+      width:min(920px, 92%);
+      height:1px;
+      background: linear-gradient(to right, transparent, rgba(15,23,42,.12), transparent);
+    }
+
+    /* NAV wrapping fix */
+    .nav-nowrap{
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-nowrap::-webkit-scrollbar{ display:none; }
+
+    /* Mission / Vision / Values shell */
+    .mv-shell{
+      background:#18222d;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 24px;
+      overflow:hidden;
+    }
+    .mv-divider{
+      height:1px;
+      background: linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+    }
+
+    /* Brand gradient text */
+    .grad{
+      background: linear-gradient(135deg, rgba(29,78,216,1), rgba(34,197,94,1));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal{ transition:none; transform:none; opacity:1; }
+      html{ scroll-behavior:auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/65 border-b border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-3 shrink-0">
+        <img
+          src="Profile.jpeg"
+          alt="Abdul Latif"
+          class="w-11 h-11 rounded-2xl object-cover shadow-lg border border-slate-200"
+        />
+        <div class="leading-tight">
+          <div class="font-head font-bold">Abdul Latif</div>
+          <div class="text-xs text-slate-500 -mt-0.5">Amazon Brand Building Strategist</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700 nav-nowrap flex-1 justify-center">
+        <a class="hover:text-slate-900" href="#services">Services</a>
+        <a class="hover:text-slate-900" href="#mission">Mission</a>
+        <a class="hover:text-slate-900" href="#why">Why Choose Me</a>
+        <a class="hover:text-slate-900" href="#contact">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <a class="btn2 hidden sm:inline-flex" href="#results">View Work</a>
+        <a class="btn" href="#contact">
+          <span>Book a Call</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="relative">
+    <section class="relative">
+      <div class="absolute inset-0 grid-bg pointer-events-none opacity-55"></div>
+
+      <div class="max-w-7xl mx-auto px-4 pt-12 pb-10 md:pt-14">
+        <div class="glow">
+          <div class="card p-6 md:p-10 relative">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+
+              <!-- Left -->
+              <div class="reveal">
+                <h1 class="font-head text-3xl md:text-5xl font-extrabold leading-tight mt-0">
+                  Helping Amazon Brands
+                </h1>
+
+                <div class="mt-3">
+                  <!-- 1) Make "Helping Amazon Brands:" same visual weight as heading-style line -->
+                  
+
+                  <!-- dynamic erase & write -->
+                  <div class="mt-2 font-head font-extrabold text-2xl md:text-4xl leading-tight">
+                    <span id="typeTarget" class="grad">Find &amp; Validate Products</span>
+                    <span class="inline-block w-[10px] ml-1 align-middle opacity-60">|</span>
+                  </div>
+
+                  <div class="mt-4">
+                    <div class="font-head font-extrabold text-lg md:text-xl">Achievements</div>
+                    <ul class="mt-3 space-y-2 text-slate-700 font-semibold">
+                      <li class="flex items-start gap-2">
+                        <span class="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500/15 text-green-700">✓</span>
+                        <span>Built 3 brands from the ground up</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500/15 text-green-700">✓</span>
+                        <span>Helped 2 brands scale to $1M+ each</span>
+                      </li>
+                      <li class="flex items-start gap-2">
+                        <span class="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500/15 text-green-700">✓</span>
+                        <span>Achieved 20% net account profitability</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <a class="btn" href="#contact">Schedule a Consultation →</a>
+                  <a class="btn2" href="#process">See My Process</a>
+                </div>
+
+                <!-- stats: vertical + add rejected -->
+                <div class="mt-7 max-w-sm space-y-3">
+                  <div class="card p-4">
+                    <div class="text-xs text-slate-500 font-extrabold">Brands Worked On</div>
+                    <div class="mt-1 text-2xl font-extrabold"><span class="count" data-target="5">0</span>+</div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-xs text-slate-500 font-extrabold">Markets Analyzed</div>
+                    <div class="mt-1 text-2xl font-extrabold"><span class="count" data-target="24">0</span>+</div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-xs text-slate-500 font-extrabold">Products Researched</div>
+                    <div class="mt-1 text-2xl font-extrabold"><span class="count" data-target="95">0</span>+</div>
+                  </div>
+                  <div class="card p-4">
+                    <div class="text-xs text-slate-500 font-extrabold">Products Rejected</div>
+                    <div class="mt-1 text-2xl font-extrabold"><span class="count" data-target="5000">0</span>+</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right -->
+              <div class="reveal">
+                <div class="relative">
+                  <div class="absolute -inset-2 rounded-[28px] bg-gradient-to-br from-blue-500/25 to-green-500/20 blur-2xl"></div>
+
+                  <div class="card p-5 md:p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-56 h-56 bg-blue-600/10 rounded-full blur-2xl"></div>
+                    <div class="absolute bottom-0 left-0 w-56 h-56 bg-green-500/10 rounded-full blur-2xl"></div>
+
+                    <div class="relative">
+                      <img
+                        src="Profile.jpeg"
+                        alt="Professional portrait"
+                        class="w-full h-[320px] md:h-[380px] rounded-[22px] object-cover border border-slate-200"
+                      />
+                    </div>
+
+                    <div class="mt-5 card p-4">
+                      <div class="font-head font-extrabold text-base md:text-lg">Naturally Programmed with</div>
+                      <ul class="mt-3 space-y-2 text-sm text-slate-700 font-semibold">
+                        <li class="flex items-start gap-2">
+                          <span class="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500/15 text-green-700">✓</span>
+                          <span>Relentless grit &amp; perseverance</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                          <span class="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500/15 text-green-700">✓</span>
+                          <span>Synergistic, clear communication</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                          <span class="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500/15 text-green-700">✓</span>
+                          <span>Calm execution under pressure</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                          <span class="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500/15 text-green-700">✓</span>
+                          <span>High-cooperation teamwork mindset</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                          <span class="mt-0.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-500/15 text-green-700">✓</span>
+                          <span>Obsessive curiosity to keep learning</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="mt-4 flex flex-wrap gap-2">
+                      <span class="badge">Keyword Research</span>
+                      <span class="badge">Competitor Audit</span>
+                      <span class="badge">Review Mining</span>
+                      <span class="badge">Profitability</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT DRIVES ME -->
+    <section id="mission" class="max-w-7xl mx-auto px-4 pb-12 soft-divider">
+      <div class="reveal glow">
+        <div class="mv-shell">
+          <div class="mv-divider"></div>
+
+          <div class="px-6 py-10 md:px-10 md:py-12">
+            <div class="text-center">
+              <h2 class="font-head text-3xl md:text-5xl font-extrabold text-white">What Drives Me</h2>
+              <p class="mt-3 text-white/75 max-w-2xl mx-auto">
+                The principles behind how I research, validate, and guide brand decisions.
+              </p>
+            </div>
+
+            <div class="mt-10 grid md:grid-cols-3 gap-10">
+              <div class="reveal">
+                <div class="h-px w-32 bg-white/60"></div>
+                <h3 class="mt-6 text-3xl font-extrabold text-white">Mission</h3>
+                <p class="mt-5 text-white/70 leading-relaxed">
+                  I help Amazon sellers build profitable, high-performing brands by validating product opportunities
+                  with customer-led differentiation and clear go/no-go decisions—reducing launch risk before money is spent.
+                </p>
+              </div>
+
+              <div class="reveal">
+                <div class="h-px w-32 bg-white/60"></div>
+                <h3 class="mt-6 text-3xl font-extrabold text-white">Vision</h3>
+                <p class="mt-5 text-white/70 leading-relaxed">
+                  To become the go-to partner for Amazon brands seeking long-term growth—combining sharp research,
+                  keyword-first positioning, and execution-ready planning (not just “ideas”).
+                </p>
+              </div>
+
+              <div class="reveal">
+                <div class="h-px w-32 bg-white/60"></div>
+                <h3 class="mt-6 text-3xl font-extrabold text-white">Values</h3>
+                <p class="mt-5 text-white/70 leading-relaxed">
+                  Transparency, measurable outcomes, and seller-friendly clarity—honest risk flags, clean reporting,
+                  and actionable next steps, backed by continuous learning as Amazon evolves.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-px w-full" style="background:linear-gradient(90deg,transparent,rgba(34,197,94,.35),rgba(29,78,216,.35),transparent);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRATEGY -->
+    <section id="strategy" class="max-w-7xl mx-auto px-4 pb-12">
+      <div class="reveal glow">
+        <div class="card p-6 md:p-10">
+          <div class="flex items-start justify-between gap-4 flex-wrap">
+            <div class="w-full">
+
+
+<!-- STRATEGY / CLARITY SECTION -->
+<div class="relative">
+
+<!-- STRATEGY / CLARITY SECTION -->
+<section class="relative">
+
+  <!-- Center Title -->
+  <div class="text-center mb-6">
+    <h3 class="font-head text-2xl md:text-3xl font-extrabold">
+      Clarity Wins
+    </h3>
+  </div>
+
+  <!-- Headings Row -->
+  <div class="grid grid-cols-2 items-center max-w-6xl mx-auto mb-4">
+
+    <!-- LEFT (single main statement) -->
+    <div class="text-right pr-8 col-span-2">
+      <h2 class="font-head text-2xl md:text-3xl font-extrabold whitespace-nowrap text-center">
+        Products solve specific <span class="grad">PROBLEMS</span> &nbsp;&nbsp;
+        Brands speak to specific <span class="grad">PEOPLE</span>
+      </h2>
+    </div>
+
+  </div>
+
+  <!-- CENTER QUOTE -->
+  <div class="text-center mb-10">
+    <p class="text-slate-600 italic max-w-3xl mx-auto"> <br>
+      “A random product won’t build a brand; serving a specific audience will”
+  </div>
+
+</section>
+
+
+          <!-- Images: keep these files in same folder as HTML -->
+          <div class="mt-7 grid md:grid-cols-2 gap-5 items-start">
+            <div class="card p-4">
+              <div class="text-xs font-extrabold text-slate-500">Not Fit</div>
+              <div class="font-head font-extrabold mt-1">Random products = chaotic brand</div>
+              <img src="Not%20fit.png" alt="Puzzles not fitting" class="mt-3 w-full rounded-2xl border border-slate-200 object-cover" />
+            </div>
+
+            <div class="card p-4">
+              <div class="text-xs font-extrabold text-slate-500">Fit</div>
+              <div class="font-head font-extrabold mt-1">Aligned products = strong brand wall</div>
+              <img src="fit.png" alt="Puzzles fitting with a new piece" class="mt-3 w-full rounded-2xl border border-slate-200 object-cover" />
+              <div class="mt-3 text-sm text-slate-600">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- TOOLS – Single Card, Clean 2-Column Layout -->
+<section class="max-w-7xl mx-auto px-4 pb-12">
+  <div class="reveal glow">
+    <div class="card p-6 md:p-10">
+
+      <!-- Section Header -->
+      <h2 class="font-head text-2xl md:text-3xl font-extrabold">
+        Tools for My Productivity
+      </h2>
+      <p class="text-slate-600 mt-2 max-w-2xl">
+        The stack I use to validate opportunities faster and turn research into clear decisions.
+      </p>
+
+      <!-- Two Column Grid -->
+      <div class="mt-8 grid lg:grid-cols-2 gap-12 items-start">
+
+        <!-- LEFT COLUMN -->
+        <div class="space-y-12">
+
+          <!-- Product Discovery & Validation -->
+          <div>
+            <div class="font-head font-extrabold text-lg">
+              Product Discovery &amp; Validation
+            </div>
+            <ul class="mt-5 space-y-3 text-slate-700 font-semibold">
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                Helium 10
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                Amazon POE
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                SmartScout
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                Own Built Validation Tool
+              </li>
+            </ul>
+          </div>
+
+          <!-- Competition Research -->
+          <div>
+            <div class="font-head font-extrabold text-lg">
+              Competition Research
+            </div>
+            <ul class="mt-5 space-y-3 text-slate-700 font-semibold">
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                ASINsight
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                Amazon Brand Analytics
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="space-y-12">
+
+          <!-- Differentiation & Development -->
+          <div>
+            <div class="font-head font-extrabold text-lg">
+              Differentiation &amp; Development
+            </div>
+            <ul class="mt-5 space-y-3 text-slate-700 font-semibold">
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                Perplexity
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                Custom GPT
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                VOC.ai
+              </li>
+            </ul>
+          </div>
+
+          <!-- Keyword Intent Mapping & PPC -->
+          <div>
+            <div class="font-head font-extrabold text-lg">
+              Keyword Intent Mapping &amp; PPC
+            </div>
+            <ul class="mt-5 space-y-3 text-slate-700 font-semibold">
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                DataDive
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="inline-flex w-7 h-7 items-center justify-center rounded-full bg-green-500/15 text-green-700">✓</span>
+                TitanTools Suite
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- SERVICES -->
+    <section id="services" class="max-w-7xl mx-auto px-4 pb-12 soft-divider">
+      <div class="reveal flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <div class="badge">Services</div>
+          <h2 class="font-head text-2xl md:text-3xl font-extrabold mt-2">What I can do for you</h2>
+          <p class="text-slate-600 mt-2 max-w-2xl">
+            Clear services with clear outcomes: decide faster, avoid risks, and build a brand-led product line.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="reveal card p-6 lift">
+          <div class="badge">01</div>
+          <h3 class="font-head text-lg font-extrabold mt-3">Product Opportunity Research</h3>
+          <p class="text-sm text-slate-600 mt-2">High-demand ideas with clear differentiation & market proof.</p>
+          <ul class="mt-4 text-sm text-slate-700 font-semibold space-y-2">
+            <li>• Demand + trend validation</li>
+            <li>• Pricing & margin sanity check</li>
+            <li>• Competition overview</li>
+          </ul>
+        </div>
+
+        <div class="reveal card p-6 lift">
+          <div class="badge">02</div>
+          <h3 class="font-head text-lg font-extrabold mt-3">Keyword & Market Mapping</h3>
+          <p class="text-sm text-slate-600 mt-2">Clustered keywords and segments for sharper positioning.</p>
+          <ul class="mt-4 text-sm text-slate-700 font-semibold space-y-2">
+            <li>• Keyword clusters</li>
+            <li>• Intent-based mapping</li>
+            <li>• Launch + expansion path</li>
+          </ul>
+        </div>
+
+        <div class="reveal card p-6 lift">
+          <div class="badge">03</div>
+          <h3 class="font-head text-lg font-extrabold mt-3">Competitor & Listing Audit</h3>
+          <p class="text-sm text-slate-600 mt-2">Find gaps and craft a stronger offer & story.</p>
+          <ul class="mt-4 text-sm text-slate-700 font-semibold space-y-2">
+            <li>• Listing weaknesses</li>
+            <li>• Image/story improvements</li>
+            <li>• Differentiation angles</li>
+          </ul>
+        </div>
+
+        <div class="reveal card p-6 lift">
+          <div class="badge">04</div>
+          <h3 class="font-head text-lg font-extrabold mt-3">Review Mining & Customer Insights</h3>
+          <p class="text-sm text-slate-600 mt-2">Turn reviews into product upgrades & copy angles.</p>
+          <ul class="mt-4 text-sm text-slate-700 font-semibold space-y-2">
+            <li>• Pain points & desires</li>
+            <li>• Feature improvement plan</li>
+            <li>• Objection handling</li>
+          </ul>
+        </div>
+
+        <div class="reveal card p-6 lift">
+          <div class="badge">05</div>
+          <h3 class="font-head text-lg font-extrabold mt-3">Profitability & Risk Scoring</h3>
+          <p class="text-sm text-slate-600 mt-2">A scorecard to avoid costly product mistakes.</p>
+          <ul class="mt-4 text-sm text-slate-700 font-semibold space-y-2">
+            <li>• Margin + fees logic</li>
+            <li>• Risk flags list</li>
+            <li>• “Go / No-Go” decision</li>
+          </ul>
+        </div>
+
+        <div class="reveal card p-6 lift">
+          <div class="badge">06</div>
+          <h3 class="font-head text-lg font-extrabold mt-3">Launch Blueprint (Complete)</h3>
+          <p class="text-sm text-slate-600 mt-2">Everything packaged into a clear action plan.</p>
+          <ul class="mt-4 text-sm text-slate-700 font-semibold space-y-2">
+            <li>• Positioning + offer</li>
+            <li>• Listing strategy</li>
+            <li>• Next steps checklist</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE ME -->
+    <section id="why" class="max-w-7xl mx-auto px-4 pb-12">
+      <div class="reveal card p-8 md:p-10">
+        <div class="text-center">
+          <h2 class="font-head text-3xl md:text-5xl font-extrabold text-slate-900">Why Choose Me</h2>
+          <div class="mx-auto mt-4 h-px w-72 bg-slate-200"></div>
+          <p class="mt-5 text-slate-600 max-w-2xl mx-auto">
+            Six reasons brands trust my research: it’s structured, brand-led, and built for action.
+          </p>
+        </div>
+
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="reveal text-center">
+            <div class="mx-auto w-20 h-20 rounded-2xl bg-white border border-slate-200 grid place-items-center shadow-sm">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-slate-900">
+                <path stroke-width="2" d="M7 3h10v18H7z"/><path stroke-width="2" d="M9 7h6M9 11h6M9 15h6"/>
+              </svg>
+            </div>
+            <div class="mt-5 font-head font-extrabold text-xl">Custom Build Template</div>
+            <p class="mt-2 text-slate-600">A repeatable framework—fast, clear, and brand-first.</p>
+          </div>
+
+          <div class="reveal text-center">
+            <div class="mx-auto w-20 h-20 rounded-2xl bg-white border border-slate-200 grid place-items-center shadow-sm">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-slate-900">
+                <path stroke-width="2" d="M4 19V5"/><path stroke-width="2" d="M4 19h16"/><path stroke-width="2" d="M7 15l3-3 3 2 4-5"/>
+              </svg>
+            </div>
+            <div class="mt-5 font-head font-extrabold text-xl">Advanced Level Report</div>
+            <p class="mt-2 text-slate-600">Clean reporting that highlights what matters—and what to do next.</p>
+          </div>
+
+          <div class="reveal text-center">
+            <div class="mx-auto w-20 h-20 rounded-2xl bg-white border border-slate-200 grid place-items-center shadow-sm">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-slate-900">
+                <path stroke-width="2" d="M4 7h16v10H4z"/><path stroke-width="2" d="M8 7V5h8v2"/>
+              </svg>
+            </div>
+            <div class="mt-5 font-head font-extrabold text-xl">Brand-Led Roadmapping</div>
+            <p class="mt-2 text-slate-600">Not “a product”—a product line strategy that compounds trust.</p>
+          </div>
+
+          <div class="reveal text-center">
+            <div class="mx-auto w-20 h-20 rounded-2xl bg-white border border-slate-200 grid place-items-center shadow-sm">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-slate-900">
+                <path stroke-width="2" d="M3 12h18"/><path stroke-width="2" d="M7 7h10M7 17h10"/>
+              </svg>
+            </div>
+            <div class="mt-5 font-head font-extrabold text-xl">Decision Simplicity</div>
+            <p class="mt-2 text-slate-600">Go/No-Go clarity with risks surfaced early—before you spend.</p>
+          </div>
+
+          <div class="reveal text-center">
+            <div class="mx-auto w-20 h-20 rounded-2xl bg-white border border-slate-200 grid place-items-center shadow-sm">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-slate-900">
+                <path stroke-width="2" d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7z"/>
+              </svg>
+            </div>
+            <div class="mt-5 font-head font-extrabold text-xl">Proven Outcomes</div>
+            <p class="mt-2 text-slate-600">Research designed to move metrics—profitability and growth.</p>
+          </div>
+
+          <div class="reveal text-center">
+            <div class="mx-auto w-20 h-20 rounded-2xl bg-white border border-slate-200 grid place-items-center shadow-sm">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-slate-900">
+                <path stroke-width="2" d="M12 21s7-4.5 7-11a7 7 0 10-14 0c0 6.5 7 11 7 11z"/>
+              </svg>
+            </div>
+            <div class="mt-5 font-head font-extrabold text-xl">Focused Support</div>
+            <p class="mt-2 text-slate-600">Clear guidance and next steps—so you can execute with confidence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="max-w-7xl mx-auto px-4 pb-12 soft-divider">
+      <div class="reveal flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <div class="badge">Results</div>
+          <h2 class="font-head text-2xl md:text-3xl font-extrabold mt-2">What you get</h2>
+          <p class="text-slate-600 mt-2 max-w-2xl">
+            Outcomes that make decision-making easy: clear insight, clear risks, and clear execution steps.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-3 gap-4">
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">Clarity</div>
+          <p class="text-sm text-slate-600 mt-2">A structured report that explains demand, risks, and next steps.</p>
+        </div>
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">Confidence</div>
+          <p class="text-sm text-slate-600 mt-2">A scorecard that tells you if an idea is worth investing in.</p>
+        </div>
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">Speed</div>
+          <p class="text-sm text-slate-600 mt-2">Fast turnaround with clean visuals and actionable insights.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="max-w-7xl mx-auto px-4 pb-12">
+      <div class="reveal flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <div class="badge">Process</div>
+          <h2 class="font-head text-2xl md:text-3xl font-extrabold mt-2">How I validate (6 simple steps)</h2>
+          <p class="text-slate-600 mt-2 max-w-2xl">
+            A practical process that moves you from “idea” to “brand-fit decision” quickly.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-4">
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">1) Keyword opportunities</div>
+          <p class="text-sm text-slate-600 mt-2">Identify clusters with intent + stable demand signals.</p>
+        </div>
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">2) Market overview</div>
+          <p class="text-sm text-slate-600 mt-2">Check size, seasonality, pricing ranges, and saturation.</p>
+        </div>
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">3) Competitor analysis</div>
+          <p class="text-sm text-slate-600 mt-2">Find listing weaknesses and differentiation angles.</p>
+        </div>
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">4) Review mining</div>
+          <p class="text-sm text-slate-600 mt-2">Extract pain points, requests, and objections for strategy.</p>
+        </div>
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">5) Profitability checks</div>
+          <p class="text-sm text-slate-600 mt-2">Fees, margins, sourcing logic, and pricing headroom.</p>
+        </div>
+        <div class="reveal card p-6 lift">
+          <div class="font-head font-extrabold text-lg">6) Final scoring & blueprint</div>
+          <p class="text-sm text-slate-600 mt-2">Go/No-Go decision + roadmap and positioning.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center reveal">
+        <a class="btn" href="#contact">Let’s discuss your next product →</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 pb-16 soft-divider">
+      <div class="reveal glow">
+        <div class="card p-6 md:p-10">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div class="badge">Free 15-min consult</div>
+              <h2 class="font-head text-2xl md:text-3xl font-extrabold mt-2">Ready to validate smarter?</h2>
+              <p class="text-slate-600 mt-2">
+                Share your category goals and budget range — I’ll tell you what I need to research and how we’ll proceed.
+              </p>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a class="btn" href="https://calendly.com/" target="_blank" rel="noreferrer">Open Booking Link →</a>
+                <a class="btn2" href="mailto:youremail@example.com">Email Me</a>
+              </div>
+
+              <div class="mt-6 text-sm text-slate-600">
+                <b>Typical turnaround:</b> 2–5 days depending on scope.
+              </div>
+            </div>
+
+            <div class="card p-6">
+              <div class="font-head font-extrabold text-lg">Quick Contact</div>
+
+              <form class="mt-4 grid gap-3" onsubmit="event.preventDefault(); alert('Form demo: connect this to GHL / email.');">
+                <input class="w-full rounded-2xl border border-slate-200 px-4 py-3 bg-white/90" placeholder="Full name" required>
+                <input class="w-full rounded-2xl border border-slate-200 px-4 py-3 bg-white/90" placeholder="Email" type="email" required>
+                <input class="w-full rounded-2xl border border-slate-200 px-4 py-3 bg-white/90" placeholder="WhatsApp / Phone">
+                <textarea class="w-full rounded-2xl border border-slate-200 px-4 py-3 bg-white/90" placeholder="What category are you interested in?" rows="4"></textarea>
+                <button class="btn justify-center" type="submit">Send →</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-200/70 bg-white/60 backdrop-blur-xl">
+      <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-3 items-center justify-between">
+        <div class="text-sm text-slate-600">
+          © <span id="year"></span> Abdul Latif. All rights reserved.
+        </div>
+        <div class="text-sm font-semibold text-slate-700 flex gap-5 flex-wrap justify-center">
+          <a class="hover:text-slate-900" href="#services">Services</a>
+          <a class="hover:text-slate-900" href="#mission">Mission</a>
+          <a class="hover:text-slate-900" href="#strategy">Strategy</a>
+          <a class="hover:text-slate-900" href="#why">Why Choose Me</a>
+          <a class="hover:text-slate-900" href="#results">Results</a>
+          <a class="hover:text-slate-900" href="#process">Process</a>
+          <a class="hover:text-slate-900" href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll reveal
+    const revealEls = Array.from(document.querySelectorAll(".reveal"));
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("in");
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el=>io.observe(el));
+
+    // Animated counters (runs once when visible)
+    const counters = Array.from(document.querySelectorAll(".count"));
+    const counterIO = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.target || "0");
+        const duration = 900;
+        const start = performance.now();
+        const from = 0;
+
+        function tick(now){
+          const t = Math.min(1, (now - start)/duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const val = Math.round(from + (target - from) * eased);
+          el.textContent = String(val);
+          if(t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterIO.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(c=>counterIO.observe(c));
+
+    // Erase + Write effect
+    (function typeErase(){
+      const el = document.getElementById("typeTarget");
+      if(!el) return;
+
+      const phrases = [
+        { plain: "Find & Validate Products", html: '<span class="grad">Find &amp; Validate</span> Products' },
+        { plain: "Brand Roadmap", html: 'Brand <span class="grad">Roadmap</span>' },
+        { plain: "Strategize Profitability", html: 'Strategize <span class="grad">Profitability</span>' }
+      ];
+
+      let p = 0, i = 0, deleting = false;
+      const typeSpeed = 42, eraseSpeed = 28;
+      const holdAfterType = 900, holdAfterErase = 240;
+
+      function step(){
+        const { plain, html } = phrases[p];
+
+        if(!deleting){
+          i++;
+          el.textContent = plain.slice(0, i);
+
+          if(i >= plain.length){
+            el.innerHTML = html; // apply gradient words
+            setTimeout(()=>{ deleting = true; step(); }, holdAfterType);
+            return;
+          }
+          setTimeout(step, typeSpeed);
+        }else{
+          el.textContent = plain.slice(0, i);
+          i--;
+
+          if(i <= 0){
+            deleting = false;
+            p = (p + 1) % phrases.length;
+            setTimeout(step, holdAfterErase);
+            return;
+          }
+          setTimeout(step, eraseSpeed);
+        }
+      }
+      step();
+    })();
+  </script>
+</body>
+</html>
